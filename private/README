@@ -1,0 +1,6 @@
+The only server assets are JavaScript and files in the private subdirectory. Meteor gathers all your JavaScript files, excluding anything under the client, public, and private subdirectories, and loads them into a Node.js server instance inside a fiber. In Meteor, your server code runs in a single thread per request, not in the asynchronous callback style typical of Node. We find the linear execution model a better fit for the typical server code in a Meteor application.
+
+Meteor gathers any files under the private subdirectory and makes the contents of these files available to server code via the Assets API. 
+
+
+The private subdirectory is the place for any files that should be accessible to server code but not served to the client, like private data files

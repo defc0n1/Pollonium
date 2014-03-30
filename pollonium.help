@@ -1,0 +1,164 @@
+------------APP FACTS---------------
+Pollonium
+
+https://github.com/perjo927/
+https://github.com/perjo927/pollonium.git
+
+------------METEOR--------------------------------------------------
+
+** Installation
+  $ curl https://install.meteor.com | sh
+
+  You'll need to ensure node and git and mongodb are installed on your machine.
+
+  Second, install Meteorite. As it's a npm executable 
+  (Node Packaged Module, Node's standard module format), we install it with:
+      $ npm install -g meteorite
+
+   On some machines you may need root permission to install Meteorite. To avoid problems,
+   make sure you use sudo -H:
+      $ sudo -H npm install -g meteorite
+
+   Meteorite installs the mrt executable, which we'll use to install packages into our
+   application. When we want to run our server, however, we use the meteor executable.
+
+
+** Create the application
+  $ meteor create prollonium
+
+  $ cd pollonium
+  $ meteor 
+-> Now point your browser to http://localhost:3000/
+   (or the equivalent http://0.0.0.0:3000/)
+
+   Stop with CTRL+C
+
+** Deploy
+  $ meteor deploy myapp.meteor.com
+  -> http://myapp.meteor.com
+
+  If you run meteor deploy with Meteor 0.7.1 or later, you'll be prompted
+  for your email address.  This starts setting you up with your Meteor developer account,
+  but lets you deploy apps without finishing the registration process;
+
+
+  Once you've entered your email address, you will receive a link to www.meteor.com, 
+  where you can finish setting up your account by choosing a username and password.
+
+  After you've done that, you can use
+  	$ meteor login 
+  on the command line. 
+
+  While you're logged in, you can deploy your apps and access their data with
+  $ meteor logs
+  and 
+  $ meteor mongo.
+
+  Once you have your account you can log in and log out from the command line, type
+       $ meteor whoami 
+
+  Type:
+      $ meteor help
+  at the command line to see the full suite of options.
+
+*** Adding and removing authorized users
+
+Once you've deployed an app using Meteor 0.7.1 or later, you can manage the list of users
+ who are authorized to deploy to that app and access its data.
+
+Run meteor authorized <app name> to see the list of users who are authorized to access your app
+ (probably just you, right now).
+ You can add other users with meteor authorized <app name> --add <username>.
+
+Once you've authorized another user, that user will be able to deploy to your app and access
+ its data with meteor logs and meteor mongo.
+ They'll also be able to add and remove authorized users with meteor authorized.
+
+To remove a user, run meteor authorized <app name> --remove <username>.
+
+
+*** Claiming legacy sites
+
+    If you have existing apps deployed with meteor deploy,
+    you'll be prompted to claim them with the new meteor claim command when you try to deploy
+    them with the new Meteor release.
+
+    Once you are logged in on the command line, use
+    	 $  meteor claim <app name> 
+    to associate these legacy apps with your new developer account.
+
+    If the old app was password-protected, you'll be prompted for the site password
+    one last time before you'll be able to claim the app.
+
+    Once you've claimed it, you'll be able to deploy to it, run 
+    	 $ meteor mongo 
+    and
+	 $ meteor logs
+    and manage authorized users with 
+      	 $ meteor authorized
+    as long as you are logged in on the command line.
+
+
+*** Using the accounts-meteor-developer package
+
+    If you develop Meteor apps for the Meteor community, 
+    you might want to let your users sign in with their Meteor developer accounts, 
+    just as the
+    accounts-github 
+    and 
+    accounts-facebook 
+    packages allow them to sign in with their GitHub and Facebook accounts.
+
+    You can add support in your app with 
+    	$ meteor add accounts-meteor-developer. 
+
+    If you then include \{{loginButtons}} somewhere in your template,
+    you'll see a configuration wizard, which will guide you to www.meteor.com/account-settings 
+    to set up an OAuth application. 
+
+    You can expect to see community sites like Discover Meteor, Atmosphere, and EventedMind 
+    using accounts-meteor-developer soon.
+
+
+
+** App Settings **
+
+   $ meteor add coffeescript   # Syntactic sugar for JS
+   $ meteor add less           # CSS pre-processor
+   $ mrt add bootstrap3-less   # Cuztomized Bootstrap (less)
+   $ mrt add jade              # HTML templating system + syntactic sugar
+   $ mrt add iron-router       # JS routing for Meteor
+
+   $ meteor remove insecure    # Secures the app
+
+ Write security rules so client can't write to database:
+ Write permission rules.
+ Need a user to secure the application ->
+
+ * account system *
+ $ meteor add accounts-password
+ $ meteor add accounts-ui
+ $ meteor add accounts-meteor-developer
+
+ e-mail: xxx
+ password: xxx
+
+The meteor.allow rule: allows an owner to perform a database operation
+
+$ meteor.reset              #reset the database)
+
+methods are secure procedures that the client can call on the server
+(Meteor.methods)  <--- API !
+
+privacy: (public/private)
+(autopublish automatically pushes a full copy of the db to the client
+ - development mode only)
+$meteor remove autopublish 
+
+ write our own publish rules
+the meteor.publish call : 
+publish to each client only what they can see
+Meteor.call()
+
+
+

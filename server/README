@@ -1,0 +1,4 @@
+Any sensitive code that you don't want served to the client, such as code containing passwords or authentication mechanisms, should be kept in the server directory.
+
+server/publications.js     # <- Meteor.publish definitions
+server/lib/environment.js  # <- configuration of server side packages

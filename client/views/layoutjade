@@ -1,0 +1,10 @@
+//
+   Created by perjo927 on 2/16/14.
+
+template(name='layout')
+    .container
+        nav
+        p
+            | {{yield}}
+        //
+           /container

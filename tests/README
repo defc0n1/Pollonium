@@ -1,0 +1,3 @@
+tests/                     # <- unit test files (won't be loaded on client or server)
+
+(Files in directories named tests are not loaded anywhere.)
