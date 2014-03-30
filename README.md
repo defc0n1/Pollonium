@@ -6,14 +6,16 @@ A radiant web solution for survey administration & analysis
 
 Originally developed and implemented for Ericsson, Link�ping
 
-# Author
+---------------------------------------------------------------
+
+## Author
 > Per Jonsson / perjo927
 ## Year
 *  2014
-### At
-&copy; Linkoping university, Sweden
+### At ###
+Linkoping university, Sweden
 
-    Copyright (C) 2014  Per Johan Gunnar Jonsson
+Copyright &copy; 2014  Per Johan Gunnar Jonsson
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
