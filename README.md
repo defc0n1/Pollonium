@@ -1,13 +1,18 @@
-== Pollonium ==
+Pollonium
+=========
 
 A radiant web solution for survey administration & analysis
+-----------------------------------------------------------
 
-Originally developed and implemented for Ericsson, Linköping
+Originally developed and implemented for Ericsson, Linkï¿½ping
 
-by Per Jonsson / perjo927
-2014. Linköping university, Sweden
+# Author
+> Per Jonsson / perjo927
+## Year
+*  2014
+### At
+&copy; Linkoping university, Sweden
 
- A radiant web solution for survey administration & analysis
     Copyright (C) 2014  Per Johan Gunnar Jonsson
 
     This program is free software: you can redistribute it and/or modify
