@@ -1,6 +1,9 @@
 == Pollonium ==
+
 A radiant web solution for survey administration & analysis
+
 Originally developed and implemented for Ericsson, Linköping
+
 by Per Jonsson / perjo927
 2014. Linköping university, Sweden
 

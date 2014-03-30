@@ -153,7 +153,7 @@ methods are secure procedures that the client can call on the server
 privacy: (public/private)
 (autopublish automatically pushes a full copy of the db to the client
  - development mode only)
-$meteor remove autopublish 
+$ meteor remove autopublish 
 
  write our own publish rules
 the meteor.publish call : 
