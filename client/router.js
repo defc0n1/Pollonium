@@ -12,6 +12,15 @@ var projectNameDash = "COMPANY WEB POLL DASHBOARD";
 var projectNameDashDesc = "Welcome to the Company Web Poll Dashboard."
 var company = 'company';
 
+// Importera från någon settings.js-fil? (impoerteras automatiskt, döp den till något bra)
+var dashboardMenuItems = [
+                          {'item': 'Dashboard'},
+                          {'item': 'Settings'},
+                          {'item': 'Profile'},
+                          {'item': 'Help'},
+                          {'item': 'Per'}
+                        ];
+
 Router.configure({
     layoutTemplate: 'layout' /*,
      notFoundTemplate: 'notFound',
@@ -23,21 +32,29 @@ Router.map(function () {
 
       path: '/', // match the root path
       template: 'hello', // will map the domain url (the / path) and automatically render the template .
-      // layoutTemplate: 'layout', // redundant
+      // layoutTemplate: 'layout', // redundant here
+      
+      // region-specific templates
+      yieldTemplates: {
+        'nav': {to: 'nav'},
+        'sidebar': {to: 'aside'},
+        'footer': {to: 'footer'}
+      },
         
       data: function () {
-      // this.params is available inside the data function
-      var params = this.params;
+        // this.params is available inside the data function
+        var params = this.params;
 
-      return {
-        projectName: projectNameDash,
-        description: projectNameDashDesc,
-        company: 'company'
+        return {
+          projectName: projectNameDash,
+          description: projectNameDashDesc,
+          company: 'company',
+          menuItems: dashboardMenuItems
+        }
       }
-    }
     });
 
-    /*        EXAMPLES
+    /*        EXAMPLES           *
 
      // No Parameters
      this.route('posts', {

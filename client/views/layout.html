@@ -1,6 +1,8 @@
 <!-- Base template used throughout the application -->
 <!--
-  The "yield-content" div is the place where templates are yielded 
+  There are a number pf regions where templates are yielded
+    They are marked with curlya braces and the yield command {{yield}}
+Regional tempaltes are marked with {{> yield}}
   There are a number of areas to where data is passed (header, navbar, sidebar, etc.)
   These are marked with curly braces {{}}
   Visit 'router.js' in order to change the data
@@ -12,58 +14,7 @@
   
   <header>       
    <nav>  
-   <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-     <br>
-     <div class="container-fluid" id="sign-in-tools">      
-       <div class="row">
-         
-         <div class="col-xs-2 col-md-1" id="logo">
-           <img src="img/logotype.png" alt="Ericsson logo" class="img-rounded">
-         </div> 
-         
-         <div class="col-xs-12 col-md-9" id="space">
-         </div>    
-          
-          <div class="col-xs-3 col-md-2" id="sign-lang">
-             <div class="btn-group">
-              <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
-                TODO: Language: {{todo}} <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">English</a></li>
-                <li><a href="#">Svenska</a></li>
-              </ul>
-             </div>  
-           <div class="btn-group">
-             <span class="navbar-right">{{> loginButtons align="right"}}</span>
-           </div>
-         </div>          
-        
-       </div>
-     </div>  
-     
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">{{projectName}}</a>
-        </div>
-        
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">{{menuItem4}}Help</a></li>
-          </ul>
-        </div> 
-        
-      </div>
-   </div>     
+     {{> yield region='nav'}} 
   </nav>   
   </header>
   
@@ -73,22 +24,9 @@
   
    <div class="container-fluid">   
       <div class="row">
-      
-        <div class="col-xs-3 col-md-2 sidebar" id="side-nav">
-          
-          <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview</a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
-          </ul>
-          
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-          </ul>
-        </div>
+        <aside>
+          {{> yield region='aside'}}
+        </aside>
         
         <div class="col-xs-12 col-md-10 main" id ="content-block">
           
@@ -104,9 +42,6 @@
    </div>
   
   <footer>
-    <hr>
-    <div class="container-fluid">
-      <div>&copy; {{company}}</div>
-    </div>
+    {{> yield region='footer'}}
   </footer>
 </template>
