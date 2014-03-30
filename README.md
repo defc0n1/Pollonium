@@ -11,9 +11,9 @@ Originally developed and implemented for Ericsson, Link�ping
 ## Author
 > Per Jonsson / perjo927
 ## Year
-*  2014
-### At ###
-Linkoping university, Sweden
+> 2014
+## At ##
+> Linkoping university, Sweden
 
 Copyright &copy; 2014  Per Johan Gunnar Jonsson
 
