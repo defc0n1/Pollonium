@@ -7,19 +7,8 @@
  *  side routes, it's okay to put the routing code in your client/ folder.
  */
 
-// TODO: Konfigera språkspecifika strängar (sv/eng)
-var projectNameDash = "COMPANY WEB POLL DASHBOARD";
-var projectNameDashDesc = "Welcome to the Company Web Poll Dashboard."
-var company = 'company';
-
-// Importera från någon settings.js-fil? (impoerteras automatiskt, döp den till något bra)
-var dashboardMenuItems = [
-                          {'item': 'Dashboard'},
-                          {'item': 'Settings'},
-                          {'item': 'Profile'},
-                          {'item': 'Help'},
-                          {'item': 'Per'}
-                        ];
+// Specific variables for templates used here are imported from 
+// lib/templateRenderingVariables.js automatically
 
 Router.configure({
     layoutTemplate: 'layout' /*,
@@ -29,7 +18,7 @@ Router.configure({
 
 Router.map(function () {
     this.route('home', {
-
+      
       path: '/', // match the root path
       template: 'hello', // will map the domain url (the / path) and automatically render the template .
       // layoutTemplate: 'layout', // redundant here
@@ -39,17 +28,26 @@ Router.map(function () {
         'nav': {to: 'nav'},
         'sidebar': {to: 'aside'},
         'footer': {to: 'footer'}
-      },
+      }      
+    });
+  
+    this.route('dashboard', {
+      // path: '/dashboard', // redundant
+      template: 'hello', 
+      // layoutTemplate: 'layout', // redundant here
+      
+      // region-specific templates
+      yieldTemplates: dashboardSetup['yieldTemplates'],
         
       data: function () {
         // this.params is available inside the data function
         var params = this.params;
 
         return {
-          projectName: projectNameDash,
-          description: projectNameDashDesc,
-          company: 'company',
-          menuItems: dashboardMenuItems
+          projectName: dashboardSetup['projectName'],
+          description: dashboardSetup['projectDesc'],
+          company: companyName,
+          menuItems: dashboardSetup['menuItems']
         }
       }
     });
