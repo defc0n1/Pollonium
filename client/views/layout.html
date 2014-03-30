@@ -1,14 +1,48 @@
 <!-- Base template used throughout the application -->
-
+<!--
+  The "yield-content" div is the place where templates are yielded 
+  There are a number of areas to where data is passed (header, navbar, sidebar, etc.)
+  These are marked with curly braces {{}}
+  Visit 'router.js' in order to change the data
+  Visit 'bootstrap_variables.import.less' in order to change the appearance
+-->
 
 
 <template name="layout">
   
-  
+  <header>       
+   <nav>  
    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+     <br>
+     <div class="container-fluid" id="sign-in-tools">      
+       <div class="row">
+         
+         <div class="col-xs-2 col-md-1" id="logo">
+           <img src="img/logotype.png" alt="Ericsson logo" class="img-rounded">
+         </div> 
+         
+         <div class="col-xs-12 col-md-9" id="space">
+         </div>    
+          
+          <div class="col-xs-3 col-md-2" id="sign-lang">
+             <div class="btn-group">
+              <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+                TODO: Language: {{todo}} <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">English</a></li>
+                <li><a href="#">Svenska</a></li>
+              </ul>
+             </div>  
+           <div class="btn-group">
+             <span class="navbar-right">{{> loginButtons align="right"}}</span>
+           </div>
+         </div>          
+        
+       </div>
+     </div>  
      
       <div class="container-fluid">
-        
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -16,7 +50,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">{{projectName}}</a>
         </div>
         
         <div class="navbar-collapse collapse">
@@ -24,31 +58,31 @@
             <li><a href="#">Dashboard</a></li>
             <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
-            <li><a href="#">Help</a></li>
+            <li><a href="#">{{menuItem4}}Help</a></li>
           </ul>
-          <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
-          </form>
-        </div>
+        </div> 
         
       </div>
-   </div>
-
-  <div>
-    Welcome to web poll.
+   </div>     
+  </nav>   
+  </header>
+  
+  <div id = "welcome">
+    {{description}}
   </div>
   
-   <div class="container-fluid">
-     
+   <div class="container-fluid">   
       <div class="row">
-        
-        <div class="col-md-3 sidebar">
+      
+        <div class="col-xs-3 col-md-2 sidebar" id="side-nav">
+          
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Overview</a></li>
             <li><a href="#">Reports</a></li>
             <li><a href="#">Analytics</a></li>
             <li><a href="#">Export</a></li>
           </ul>
+          
           <ul class="nav nav-sidebar">
             <li><a href="">Nav item</a></li>
             <li><a href="">Nav item again</a></li>
@@ -56,39 +90,23 @@
           </ul>
         </div>
         
-        <div class="col-md-9 main">
+        <div class="col-xs-12 col-md-10 main" id ="content-block">
+          
           <h1 class="page-header">Dashboard</h1>
-
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
+          <h2 class="sub-header">Section title</h2> 
           
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-            
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
- 
-          </div>
-
-          <h2 class="sub-header">Section title</h2>
-          
-          
-         <div>
+         <div id="yield-content">
           {{> yield}}
          </div>
-
-
           
         </div>
       </div>
+   </div>
+  
+  <footer>
+    <hr>
+    <div class="container-fluid">
+      <div>&copy; {{company}}</div>
     </div>
-
+  </footer>
 </template>

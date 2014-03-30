@@ -6,6 +6,12 @@
  *  Meteor.isServer blocks. Or, if you are only going to be using client
  *  side routes, it's okay to put the routing code in your client/ folder.
  */
+
+// TODO: Konfigera språkspecifika strängar (sv/eng)
+var projectNameDash = "COMPANY WEB POLL DASHBOARD";
+var projectNameDashDesc = "Welcome to the Company Web Poll Dashboard."
+var company = 'company';
+
 Router.configure({
     layoutTemplate: 'layout' /*,
      notFoundTemplate: 'notFound',
@@ -15,9 +21,20 @@ Router.configure({
 Router.map(function () {
     this.route('home', {
 
-        path: '/', // match the root path
-        template: 'hello' // will map the domain url (the / path) and automatically render the template .
-        //layoutTemplate: 'layout'
+      path: '/', // match the root path
+      template: 'hello', // will map the domain url (the / path) and automatically render the template .
+      // layoutTemplate: 'layout', // redundant
+        
+      data: function () {
+      // this.params is available inside the data function
+      var params = this.params;
+
+      return {
+        projectName: projectNameDash,
+        description: projectNameDashDesc,
+        company: 'company'
+      }
+    }
     });
 
     /*        EXAMPLES

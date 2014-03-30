@@ -123,6 +123,7 @@ To remove a user, run meteor authorized <app name> --remove <username>.
 
 ** App Settings **
 
+   $ meteor add jquery         # JS library
    $ meteor add coffeescript   # Syntactic sugar for JS
    $ meteor add less           # CSS pre-processor
    $ mrt add bootstrap3-less   # Cuztomized Bootstrap (less)
