@@ -4,9 +4,12 @@
 
 /* Move down content because we have a fixed navbar that is appr. 140 px tall */
 body {
-  padding-top: 140px;
+  padding-top: 145px;
 }
 
+img {
+  padding-bottom: 5px;
+}
 
 /*
  * Global add-ons

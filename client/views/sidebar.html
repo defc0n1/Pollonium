@@ -2,16 +2,18 @@
   <div class="col-xs-3 col-md-2 sidebar" id="side-nav">
     
     <ul class="nav nav-sidebar">
-      <li class="active"><a href="#">Overview</a></li>
-      <li><a href="#">Reports</a></li>
-      <li><a href="#">Analytics</a></li>
-      <li><a href="#">Export</a></li>
-    </ul>
+      <li class="active"><a href="#">Overview</a></li> <!-- TODO! -->
+ 
+      <hr>
+      {{#each sidebarItems}}
+      <li><a href="">{{item}}</a></li>
+      {{/each}}
+      <hr>
+     </ul>
     
+    <!-- TODO: Sub-menu items -->
     <ul class="nav nav-sidebar">
-      <li><a href="">Nav item</a></li>
-      <li><a href="">Nav item again</a></li>
-      <li><a href="">One more nav</a></li>
+      <li><a href="">Sub item</a></li>
     </ul>
   </div>
 </template>

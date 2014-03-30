@@ -44,9 +44,10 @@ Router.map(function () {
         var params = this.params;
 
         return {
+          company: companyName,
           projectName: dashboardSetup['projectName'],
           description: dashboardSetup['projectDesc'],
-          company: companyName,
+          sidebarItems: dashboardSetup['sidebarItems'],
           menuItems: dashboardSetup['menuItems']
         }
       }

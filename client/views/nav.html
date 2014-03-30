@@ -1,37 +1,43 @@
 <!-- Navigational header section template -->
 
 <template name = "nav">
-  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <br>
+    
+    <!-- Space above menu for sign-in tools and logo -->
     <div class="container-fluid" id="sign-in-tools">      
       <div class="row">
+        
+        <!-- logo -->
+        <div class="col-xs-2 col-md-1" id="logo">
+          <img src="img/logotype.png" alt="Ericsson logo" class="img-rounded">
+        </div> 
 
-	<div class="col-xs-2 col-md-1" id="logo">
-	  <img src="img/logotype.png" alt="Ericsson logo" class="img-rounded">
-	</div> 
-
-	<div class="col-xs-12 col-md-9" id="space">
-	</div>    
-
-	<div class="col-xs-3 col-md-2" id="sign-lang">
-	  <div class="btn-group">
-	    <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
-	      TODO: Language: {{todo}} <span class="caret"></span>
-	    </button>
-	    <ul class="dropdown-menu" role="menu">
-	      <li><a href="#">English</a></li>
-	      <li><a href="#">Svenska</a></li>
-	    </ul>
-	  </div>  
-	  <div class="btn-group">
-	    <span class="navbar-right">{{> loginButtons align="right"}}</span>
-	  </div>
-	</div>          
-
+        <!-- Empty space -->
+        <div class="col-xs-12 col-md-9" id="space">
+        </div>    
+        
+        <!-- Sign-in and language tools-->
+        <div class="col-xs-3 col-md-2" id="signin-language">
+          <div class="btn-group">
+            <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+              TODO: Language: {{todo}} <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">English</a></li>
+              <li><a href="#">Svenska</a></li>
+            </ul>
+          </div>  
+          <div class="btn-group">
+            <span class="navbar-right">{{> loginButtons align="right"}}</span>
+          </div>
+        </div>          
       </div>
+      
     </div>  
 
-    <div class="container-fluid">
+    <!-- Navigational items -->
+    <div class="container-fluid bg-danger">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="sr-only">Toggle navigation {{lang}}</span>
@@ -41,9 +47,9 @@
         </button>
         <a class="navbar-brand" href="#">{{projectName}}</a>
       </div>
-
+      
       <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-left">
         {{#each menuItems}}
           <li><a href="#">{{item}}</a></li>
         {{/each}}

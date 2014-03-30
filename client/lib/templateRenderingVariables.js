@@ -13,12 +13,19 @@ dashboardSetup = {
   'projectName': "COMPANY WEB POLL DASHBOARD",
   'projectDesc': "Welcome to the Company Web Poll Dashboard.",
   'menuItems':  [
-                  {'item': 'Dashboard'},
-                  {'item': 'Settings'},
-                  {'item': 'Profile'},
-                  {'item': 'Help'},
+                  {'item': 'DASHBOARD'},
+                  {'item': 'SETTINGS'},
+                  {'item': 'PROFILE'},
+                  {'item': 'HELP'},
                   {'item': 'Per'}
                 ],
+  'sidebarItems':  [
+                    {'item': 'Text'},
+                    {'item': 'Text 2'},
+                    {'item': 'Text 3'},
+                    {'item': 'Text 4'},
+                    {'item': 'Text 5'}
+                  ],
   'yieldTemplates': {
                       'nav': {to: 'nav'},
                       'sidebar': {to: 'aside'},
