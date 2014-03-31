@@ -1,5 +1,7 @@
-/* Set up Iron Router to render default layout templates (jade)
+/* 
+ *  Set up Iron Router to render default layout templates (TODO: jade)
  *  https://github.com/EventedMind/iron-router/blob/master/DOCS.md
+ *
  *  Once you add the iron-router package the global Router object is
  *  available on the client and on the server. So you can create your
  *  routes and configure the router outside of your Meteor.isClient and
@@ -8,7 +10,7 @@
  */
 
 // Specific variables for templates used here are imported from 
-// lib/templateRenderingVariables.js automatically
+// lib/templateRenderingVariables.js, automatically by Meteor
 
 Router.configure({
     layoutTemplate: 'layout' /*,
@@ -18,42 +20,27 @@ Router.configure({
 
 Router.map(function () {
     this.route('home', {
-      
+      // *** EXAMPEL ROUTE ****/ TODO: MAKE POLLONIUM MANAGER ACCOUNT HERE?
       path: '/', // match the root path
       template: 'hello', // will map the domain url (the / path) and automatically render the template .
       // layoutTemplate: 'layout', // redundant here
-      
-      // region-specific templates
-      yieldTemplates: {
-        'nav': {to: 'nav'},
-        'sidebar': {to: 'aside'},
-        'footer': {to: 'footer'}
-      }      
+      yieldTemplates: templatesSetup // // region-specific templates
     });
   
     this.route('dashboard', {
       // path: '/dashboard', // redundant
-      template: 'hello', 
-      // layoutTemplate: 'layout', // redundant here
-      
-      // region-specific templates
-      yieldTemplates: dashboardSetup['yieldTemplates'],
+      template: 'dashboard', 
+      yieldTemplates: templatesSetup,
         
       data: function () {
         // this.params is available inside the data function
-        var params = this.params;
+        //var params = this.params; // choose returns differently depending on input from user ?
 
-        return {
-          company: companyName,
-          projectName: dashboardSetup['projectName'],
-          description: dashboardSetup['projectDesc'],
-          sidebarItems: dashboardSetup['sidebarItems'],
-          menuItems: dashboardSetup['menuItems']
-        }
+        return dashboardSetup
       }
     });
 
-    /*        EXAMPLES           *
+    /***  EXAMPLES ***
 
      // No Parameters
      this.route('posts', {
@@ -123,5 +110,5 @@ Router.map(function () {
      // matches: '/commits/789..101112'
      path: /^\/commits\/(\d+)\.\.(\d+)/
      });
-     */
+     **********************************/
 });
