@@ -1,6 +1,0 @@
-//
-   Created by perjo927 on 2/16/14.
-
-template(name='admin')
-    div
-        | {{loginButtons}}

@@ -1,0 +1,13 @@
+// Sign-in fields to be used at different places in the system
+template(name='signinjade')
+  h3 Signin Jade
+  
+  .container
+  form.form-signin(role='form')
+    h2.form-signin-heading Please sign in
+    input.form-control(type='email', placeholder='Email address', required='', autofocus='')
+    input.form-control(type='password', placeholder='Password', required='')
+    label.checkbox
+      input(type='checkbox', value='remember-me')
+      | Remember me
+    button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in

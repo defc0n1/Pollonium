@@ -13,30 +13,30 @@
 // lib/templateRenderingVariables.js, automatically by Meteor
 
 Router.configure({
-    layoutTemplate: 'layout' /*,
-     notFoundTemplate: 'notFound',
-     loadingTemplate: 'loading' */
+    layoutTemplate: 'layout'//,
+     //notFoundTemplate: 'notFound', // TODO
+     //loadingTemplate: 'loading'  // TODO
 });
 
 Router.map(function () {
-    this.route('home', {
+    this.route('admin', {
       // *** EXAMPEL ROUTE ****/ TODO: MAKE POLLONIUM MANAGER ACCOUNT HERE?
       path: '/', // match the root path
-      template: 'hello', // will map the domain url (the / path) and automatically render the template .
+      template: 'admin', // will map the domain url (the / path) and automatically render the template .
       // layoutTemplate: 'layout', // redundant here
-      yieldTemplates: templatesSetup // // region-specific templates
+      yieldTemplates: templatesSetup.templates // // region-specific templates, load default templates
     });
   
-    this.route('dashboard', {
-      // path: '/dashboard', // redundant
-      template: 'dashboard', 
-      yieldTemplates: templatesSetup,
+    this.route('manage', {
+      // path: '/manage', // redundant
+      template: 'manage', 
+      yieldTemplates: templatesSetup.templates,
         
       data: function () {
         // this.params is available inside the data function
         //var params = this.params; // choose returns differently depending on input from user ?
 
-        return dashboardSetup
+        return templatesSetup.manage['eng']; // ;? // TODO: eng ska vara conditional och bestämma av event eller params
       }
     });
 

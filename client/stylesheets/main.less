@@ -1,5 +1,20 @@
-// TODO: Vad är Less + fixa dokumentation
-// Här lägger man till sina egna definitioner - som Ericsson
+/* Less is a CSS pre-processor, meaning that it extends the CSS language,
+ * adding features that allow variables, mixins, functions and many other 
+ * techniques that allow you to make CSS that is more maintainable, themable and extendable.
+ * Less runs in Node. In meteor less is packaged with $ meteor add less
+ * Less for Bootstrap is packaged with $ mrt bootstrap-less
+ *
+ * See: lesscss.org 
+ */
+
+// Here is the place to extend definitions - tailored for your company
 
 @import "../../packages/bootstrap3-less/bootstrap.import.less";
 @import "variables_bootstrap.import.less";
+
+@bg-primary:             lighten(@brand-primary, 10%);
+
+// Navigational background
+.nav-back {
+  background-color: @gray-light;
+}

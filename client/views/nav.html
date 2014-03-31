@@ -9,17 +9,18 @@
       <div class="row">
         
         <!-- logo -->
-        <div class="col-xs-2 col-md-1" id="logo">
-          <img src="img/logotype.png" alt="Ericsson logo" class="img-rounded">
+        <div class="col-xs-3 col-md-2" id="logo">
+          <img src="img/logotype.png" alt="Ericsson logo" class="img-rounded pull-right">
         </div> 
 
         <!-- Empty space -->
-        <div class="col-xs-12 col-md-9" id="space">
+        <div class="col-xs-9 col-md-7" id="space">
+          <h2 class="text-center">{{company}} <small>Work Environment Web Poll {{year}}</small></h2>
         </div>    
         
         <!-- Sign-in and language tools-->
-        <div class="col-xs-3 col-md-2" id="signin-language">
-          <div class="btn-group">
+        <div class="col-xs-2 col-md-1" id="signin-language">
+          <div class="btn-group navbar-right">
             <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
               TODO: Language: {{todo}} <span class="caret"></span>
             </button>
@@ -31,13 +32,20 @@
           <div class="btn-group">
             <span class="navbar-right">{{> loginButtons align="right"}}</span>
           </div>
-        </div>          
+        </div> 
+        
+        <div class="col-xs-3 col-md-2" id="signin-language">
+        </div>
       </div>
       
     </div>  
 
     <!-- Navigational items -->
-    <div class="container-fluid bg-danger">
+    <!-- Space -->
+    <div class="container-fluid nav-back">
+      <div class="col-xs-2 col-md-1" id="navbar-space">
+      </div>
+      <!-- Responsive navigation and logo -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="sr-only">Toggle navigation {{lang}}</span>
@@ -45,13 +53,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">{{projectName}}</a>
+        <a class="navbar-brand" href="#"><b>{{projectName}}</b></a>
       </div>
       
-      <div class="navbar-collapse collapse">
+      <div class="navbar-collapse collapse nav-back">
       <ul class="nav navbar-nav navbar-left">
         {{#each menuItems}}
-          <li><a href="#">{{item}}</a></li>
+        <li><a href="#"><b>{{item}}</b></a></li>
         {{/each}}
       </ul>
       </div> 

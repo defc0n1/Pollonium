@@ -1,6 +1,6 @@
 // JS for template-specific handling
 
-
+/*
 Template.hello.greeting = function () {
     return "Welcome to pollonium.";
 };
@@ -12,3 +12,4 @@ Template.hello.events({
             console.log("You pressed the button");
     }
 });
+*/
