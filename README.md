@@ -4,7 +4,11 @@ Pollonium
 A radiant web solution for survey administration & analysis
 -----------------------------------------------------------
 
-Originally developed and implemented for Ericsson, Link�ping
+Originally developed and implemented for Ericsson, Linkoping
+
+Tools used:
+* IDE: <i> JetBrains WebStorm </i> and <i> Nitrous.io </i>
+* OS:  <i> Linux / Ubuntu </i> and <i> Windows 8 (with Nitrous.io) </i>
 
 ---------------------------------------------------------------
 

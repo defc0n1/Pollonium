@@ -1,0 +1,12 @@
+// Sidebar html template (meteor-jade)
+
+template(name='sidebar')
+  div#side-nav.col-xs-3.col-md-2.sidebar
+    ul.nav.nav-sidebar
+      li.active
+        a(href='#') {{navTitle}}
+      each sidebarItems}}
+        li.nav-tabs
+          a(href='') >{{item}}
+
+

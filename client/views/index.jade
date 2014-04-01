@@ -1,7 +1,19 @@
 //
-    This html will be loaded for every route 
-    Meteor will then automatically inject the templates into
-    a body
+    This is a jade file for the Jade templating engine. Jade is designed primarily 
+    for server side templating in node.js, however it can be used in many other environments.
+    It is intended to produce XML like documents (HTML, RSS etc.)
+    Meteor supports jade and it is the choice of HTML templating language in this project
+    because of its lightweight syntax.
+    However, it can be converted back to straight html. Rememember though that below it
+    then will still have to conform to Spacebars templating syntax. 
+    
+    See: https://github.com/meteor/meteor/blob/master/packages/spacebars/README.md
+    and: https://github.com/mquandalle/meteor-jade/ as well as jade-lang.com
+    
+    ----------------------------------------------------------------------------
+    
+    This html below will be loaded for every route. 
+    Meteor will then automatically inject the templates into a body
     (doctype and body do not neet to be specified)
     
 head
@@ -16,4 +28,5 @@ head
   //if lt IE 9
     script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
     script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+    
   title Company Work Environment Web Poll

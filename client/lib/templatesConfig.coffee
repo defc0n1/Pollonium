@@ -69,6 +69,7 @@ Survey management setup ENG **
 root.templatesSetup.manage["eng"] =
   company: companyName
   year: pollYear
+  navTitle: "MANAGE"
   projectName: "COMPANY WEB POLL MANAGEMENT"
   description: "Welcome to the Company Web Poll Management Dashboard."
   pageHeader: "WEB POLL DASHBOARD"
@@ -91,7 +92,7 @@ root.templatesSetup.manage["eng"] =
   ]
   sidebarItems: [
     {
-      item: "Text"
+      item: "HELP"
     }
     {
       item: "Text 2"
