@@ -54,6 +54,11 @@ template(name='nav')
       // Menu Items    
       .navbar-collapse.collapse
         ul.nav.navbar-nav.nav-tabs.navbar-left
+          // 
+            li
+              a(href='#')
+                b {{menuStrings.menu.dashboard}}
+            
           each menuItems
             li
               a(href='#')

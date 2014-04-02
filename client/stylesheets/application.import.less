@@ -33,6 +33,13 @@ img {
    font-weight: bold;
 }
 
+// Main content
+#content-block {
+  //border-top: 1px solid @purple;
+  border-left: 1px solid @dark-green;
+}
+
+
 /*
  * Sidebar
  */
@@ -42,13 +49,13 @@ img {
     bottom: 0;
     left: 0;
     z-index: 1000;
-    display: block;
+    display: table-cell;//block;
     padding: 20px;
     overflow-x: hidden;
     overflow-y: auto;
     background-color: @gray-lighter;
     border-top: 1px solid @dark-green;
-    border-right: 1px solid @dark-green;
+    //border-right: 1px solid @dark-green;
 }
 
 /* Sidebar navigation */

@@ -16,7 +16,7 @@ template(name='layout')
     p {{description}}
 
   div.container-fluid
-    div.row
+    div.row#side-bar
       aside
         | {{> yield region='aside'}}
       div#content-block.col-xs-12.col-md-10.main
