@@ -1,10 +1,11 @@
-// Template(s) for managing surveys. 
-   TODO: Language strings, sub templates !!
+// Template landing page for managing Pollonium. 
 
 template(name='manage')
   h3.sub-header Create, edit, and analyze surveys
+  // if session
   p.lead  > Please sign in with your manager account in order to use this service. 
     +signin
+  // else
+      TODO: Signed-in text
 
 
-template(name='submanagetemplate')

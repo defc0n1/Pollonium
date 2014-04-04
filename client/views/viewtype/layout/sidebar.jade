@@ -5,8 +5,8 @@ template(name='sidebar')
     ul.nav.nav-sidebar
       li.active
         a(href='#') {{navTitle}}
-      each sidebarItems}}
+      each menu.subMenuItems
         li.nav-tabs
-          a(href='') >{{item}}
+          a(href='') > {{getText label}}
 
 

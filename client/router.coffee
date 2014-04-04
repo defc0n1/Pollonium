@@ -7,9 +7,10 @@
 # Specific variables for templates used here are imported from 
 # lib/templatesConfig.coffee, automatically by Meteor
 
-Router.configure layoutTemplate: "layout" #,
-#notFoundTemplate: 'notFound', // TODO
-#loadingTemplate: 'loading'  // TODO
+Router.configure 
+    layoutTemplate: "layout", #
+    notFoundTemplate: 'not-found', # TODO
+    loadingTemplate: 'loading'  # TODO
 
 Router.map ->
   @route "survey",
@@ -23,27 +24,81 @@ Router.map ->
     # path: '/manage', // redundant
     template: "manage"
     yieldTemplates: templatesSetup.templates
-    data: ->
-      
+    data: ->    
       # this.params is available inside the data function
-      #var params = this.params; // choose returns differently depending on input from user ?
+      #var params = this.params; // choose returns differently depending on input from user ?     
+
+      templatesSetup.manage.menu.menuItems = menuItemsManage
+      templatesSetup.manage.menu.subMenuItems = subMenuItemsManage
+        
+      #console.dir subMenuItemsManage
+      #console.dir menuItemsManage
+      #console.dir templatesSetup.manage
+      #console.dir templatesSetup.templates
       
-      templatesSetup.manage["eng"] # ;? // TODO: eng ska vara conditional och bestämma av event eller params
+      templatesSetup.manage # 
+    #action: ->
+            # TODO: Disable menu/s, set language string
+            # 
+  @route "manageAccounts",
+    path: "/manage/accounts"
+    template: "manage-accounts"
+    yieldTemplates: templatesSetup.templates
+    data: ->    
+      templatesSetup.manage
+    #action: ->
+    #
+  @route "manageAnalytics",
+    path: "/manage/analytics"
+    template: "manage-analytics"
+    yieldTemplates: templatesSetup.templates
+    data: ->    
+      templatesSetup.manage
+    #action: ->  
+  
+  @route "manageHierarchy",
+    path: "/manage/hierarchy"
+    template: "manage-hierarchy"
+    yieldTemplates: templatesSetup.templates
+    data: ->    
+      templatesSetup.manage
+    #action: ->          
+
+  @route "managePersonnel",
+    path: "/manage/personnel"
+    template: "manage-personnel"
+    yieldTemplates: templatesSetup.templates
+    data: ->    
+      templatesSetup.manage
+    #action: ->
+  
+  @route "manageSettings",
+    path: "/manage/settings"
+    template: "manage-settings"
+    yieldTemplates: templatesSetup.templates
+    data: ->    
+      templatesSetup.manage
+    #action: -> 
+    #
+  @route "manageSurveys",
+    path: "/manage/surveys"
+    template: "manage-surveys"
+    yieldTemplates: templatesSetup.templates
+    data: ->    
+      templatesSetup.manage
+    #action: ->  
+        
+  @route "manageSurveyTask",
+    path: "/manage/survey/*"
+    #action: ->
+        # TODO: this.render(this.params), this.yieldTemplates: templateSetup
   return
   
   ###
   EXAMPLES 
   ###
   
-  ###
-  # No Parameters
-  @route "posts",
-    
-    # matches: '/posts'
-    # redundant since the name of the route is posts
-    path: "/posts"
-
-  
+  ###  
   # One Required Parameter
   @route "postShow",
     
@@ -111,4 +166,4 @@ Router.map ->
     # matches: '/commits/789..101112'
     path: /^\/commits\/(\d+)\.\.(\d+)/
   ###
-  #return
+

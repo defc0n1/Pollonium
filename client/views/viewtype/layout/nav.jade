@@ -11,7 +11,7 @@ template(name='nav')
       
         // logo
         #nav-logo.col-xs-3.col-md-2
-          img.img-rounded.pull-right(src='img/logotype.png', alt='Ericsson logo')
+          img.img-rounded.pull-right(src="img/logotype.png", alt='Company logo')
           
         // Empty space
         #left-nav-space.col-xs-9.col-md-7
@@ -23,7 +23,7 @@ template(name='nav')
         #signin-language.col-xs-2.col-md-1
           .btn-group.navbar-right
             button.btn.btn-default.btn-xs.dropdown-toggle(type='button', data-toggle='dropdown')
-              | TODO: Language: {{todo}}
+              | Choose Language / Välj språk: {{todo}}
               span.caret
             ul.dropdown-menu(role='menu')
               li
@@ -48,19 +48,15 @@ template(name='nav')
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        a.navbar-brand(href='#')
+        a.navbar-brand(href='{{pathFor coreRoute}}')
           b {{projectName}}
           
       // Menu Items    
       .navbar-collapse.collapse
         ul.nav.navbar-nav.nav-tabs.navbar-left
-          // 
-            li
-              a(href='#')
-                b {{menuStrings.menu.dashboard}}
             
-          each menuItems
+          each menu.menuItems
             li
-              a(href='#')
-                b {{item}}
+              a(href='{{pathFor route}}')
+                b {{getText label}}
 

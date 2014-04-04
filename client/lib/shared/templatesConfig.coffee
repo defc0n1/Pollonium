@@ -19,7 +19,7 @@
 
 # Name of your company (globally used) 
 @companyName = "COMPANY" 
-@pollYear = 2014
+@pollYear = 2014 # TODO: Load from collectison instead? set when survey-creating..
 
 
 # TemplateSetup - superclass #
@@ -32,22 +32,10 @@
 # *   Every template setup comes with two languages
 # 
 TemplateSetup = ->
-  @admin =
-    swe: {}
-    eng: {}
-
-  @survey =
-    swe: {}
-    eng: {}
-
-  @manage =
-    swe: {}
-    eng: {}
-
-  @analyze =
-    swe: {}
-    eng: {}
-
+  @admin = {}
+  @survey = {}
+  @manage = {}
+  @analyze = {}
   @templates = {}
   return
 

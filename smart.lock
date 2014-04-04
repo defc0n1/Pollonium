@@ -4,13 +4,14 @@
     "basePackages": {
       "jade": {},
       "iron-router": {},
-      "bootstrap3-less": {}
+      "bootstrap3-less": {},
+      "handlebar-helpers": {}
     },
     "packages": {
       "jade": {
         "git": "https://github.com/mquandalle/meteor-jade.git",
-        "tag": "v0.2.0",
-        "commit": "b0273abb6f13316c335f60bdedc0ee1026748058"
+        "tag": "v0.2.1",
+        "commit": "969fc3dd0adbb15304e3e13c3e27260398d89503"
       },
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
@@ -21,6 +22,11 @@
         "git": "https://github.com/eprochasson/bootstrap3-less",
         "tag": "v0.1.9",
         "commit": "5c812c4d7ce72917a065f0424c3cf54e5ff2d16a"
+      },
+      "handlebar-helpers": {
+        "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
+        "tag": "v0.1.1",
+        "commit": "0b407ab65e7c1ebd53d71aef0de2e2c1d21a597c"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
