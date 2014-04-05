@@ -9,10 +9,10 @@
 templatesSetup.manage =
   company: companyName
   year: pollYear
-  navTitle: "MANAGE"
-  projectName: "COMPANY WEB POLL MANAGEMENT"
-  description: "Welcome to the Company Web Poll Management Dashboard."
-  pageHeader: "WEB POLL DASHBOARD"
+  navTitle: "submenu.navtitle"
+  projectName:  "manage.projectname"
+  description: "manage.description"
+  pageHeader: "manage.pageheader"
   coreRoute: "manage"
   menu: { 
         menuItems: []

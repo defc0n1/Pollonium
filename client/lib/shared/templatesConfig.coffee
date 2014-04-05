@@ -51,4 +51,8 @@ TemplateSetup = ->
     to: "aside"
   footer:
     to: "footer"
+  description:
+    to: "description"
+  pageheader:
+    to: "pageheader" 
 

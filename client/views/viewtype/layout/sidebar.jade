@@ -2,11 +2,11 @@
 
 template(name='sidebar')
   div#side-nav.col-xs-3.col-md-2.sidebar
-    ul.nav.nav-sidebar.menu-capitalize
-      li.active
-        a(href='#') {{navTitle}}
+    ul.nav.nav-sidebar
+      li.active.menu-uppercase
+        a(href='#') {{getText navTitle}}
       each menu.subMenuItems
-        li.nav-tabs
+        li.nav-tabs.menu-capitalize
           a(href='') > {{getText label}}
 
 

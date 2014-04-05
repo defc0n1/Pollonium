@@ -17,24 +17,23 @@ template(name='nav')
         #left-nav-space.col-xs-9.col-md-7
           h2.text-center
             | {{company}}
-            // year from db instead
+            // TODO: get year from db instead
             small  Work Environment Web Poll {{year}}
             
         // Sign-in and language tools
         #signin-language.col-xs-2.col-md-1
           .btn-group.navbar-right
             button.btn.btn-default.btn-xs.dropdown-toggle(type='button', data-toggle='dropdown')
-              | Language / Språk:
+              | Language / Språk: 
               span.caret
             ul.dropdown-menu(role='menu')
               li
                 a(href='#' id="en") English
               li
                 a(href='#' id="sw") Svenska
-          .btn-group
-            span.navbar-right {{> loginButtons align="right"}}
-        #right-nav-space.col-xs-3.col-md-2
-        
+          .btn-group.navbar-right
+            | {{> loginButtons align="right"}}
+        #right-nav-space.col-xs-3.col-md-2        
         
     // Navigational items //
     .container-fluid.gradient
@@ -43,15 +42,16 @@ template(name='nav')
       #navbar-space.col-xs-2.col-md-1
       
       // Responsive navigation and logo
-      .navbar-header.menu-uppercase
+      .navbar-header
         button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-          span.sr-only Toggle navigation
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
-        a.navbar-brand(href='{{pathFor coreRoute}}')
-          b {{projectName}}
-          
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        // +with projectName
+        a.navbar-brand.menu-uppercase(href='{{pathFor coreRoute}}')
+            b {{getText projectName}}
+
       // Menu Items    
       .navbar-collapse.collapse.menu-uppercase
         ul.nav.navbar-nav.nav-tabs.navbar-left

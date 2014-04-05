@@ -13,14 +13,14 @@ template(name='layout')
       | {{> yield region='nav'}}
 
   div#welcome.container-fluid
-    p {{description}}
+    | {{> yield region='description'}}
 
   div.container-fluid
     div.row#side-bar
       aside
         | {{> yield region='aside'}}
       div#content-block.col-xs-12.col-md-10.main
-        h1.page-header {{pageHeader}}
+        | {{> yield region='pageheader'}}
         div#yield-content
           | {{> yield}}
 
