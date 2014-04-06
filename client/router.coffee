@@ -37,12 +37,12 @@ Router.configure
     notFoundTemplate: 'not-found', # TODO
     loadingTemplate: 'loading'  # TODO
     yieldTemplates: templatesSetup.templates
-    onBeforeAction: ->
+    onData: ->
         setTitle templatesSetup.manage.navTitle
         return
 
 
-# Set up routes
+# Set up routes #
 Router.map ->
   @route "survey",
     # *** EXAMPLE ROUTE *** TODO: MAKE POLLONIUM MANAGER ACCOUNT HERE? OR SURVEY
@@ -79,7 +79,6 @@ Router.map ->
         return
     data: ->    
       templatesSetup.manage
-    
   
   @route "manageHierarchy",
     path: "/manage/hierarchy"
@@ -125,7 +124,8 @@ Router.map ->
         setMenu subMenuItemsSurvey
         return
     data: ->
-      templatesSetup.manage          onData: ->
+      templatesSetup.manage          
+    onAfterAction: ->
         @render @params._id
         return
   return
