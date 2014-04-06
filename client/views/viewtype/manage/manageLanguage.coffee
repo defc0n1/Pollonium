@@ -1,10 +1,11 @@
 # language settings for Manage template menu
 
 languageText.appendProperties [
+    ## TITLES, HEADINGS
     {
         label: 'manage.projectname'
         en: "Web poll management"
-        sw: ": Enkäthantering"   
+        sw: companyName + ": Enkäthantering"   
     }
     {
         label: 'manage.description'
@@ -14,12 +15,28 @@ languageText.appendProperties [
     {
         label: 'manage.pageheader'
         en: "Web Poll Dashboard"
-        sw: "Kontrolpanel för enkäthanteraren"   
+        sw: "Kontrollpanel för enkäthanteraren"   
     }
+    {
+        label: 'manage.subheader'
+        en: "> Create, edit and analyze surveys"
+        sw: "> Skapa, redigera och analysera enkäter"   
+    }
+    {
+        label: 'manage.leadtext.notsignedin'
+        en: "> Please sign in with your manager account in order to use this service. "
+        sw: "> Var god logga in med ditt användarkonto för att kunna använda tjänsten."   
+    }
+    {
+        label: 'manage.leadtext.signedin'
+        en: "> Utilize the sidebar menu to use the tools availabe. "
+        sw: "> Använd menyn till höger för att utnyttja verktygen."   
+    }
+    ## MENU
     {
         label: 'menu.surveys'
         en: "Surveys"
-        swe: "Enkäter"   
+        sw: "Enkäter"   
     }
     {
         label: 'menu.analytics'
@@ -46,41 +63,5 @@ languageText.appendProperties [
         label: 'menu.settings'
         en: "Profile settings"
         sw: "Profilinställningar"
-    }
-    {
-        label: 'submenu.manage.help'
-        en: "Help"
-        sw: "Hjälp"
-    }
-    {
-        label: 'submenu.survey.help'
-        en: "Help"
-        sw: "Hjälp"
-    }
-    {
-        label: 'submenu.survey.create'
-        en: "Create"
-        sw: "Skapa"
-            
-    }
-    {
-        label: 'submenu.survey.edit'
-        en: "Edit"
-        sw: "Redigera"
-    }
-    { 
-        label: 'submenu.survey.deploy'
-        en: "Deploy"
-        sw: "Deploy"
-    }
-    {
-        label: 'submenu.survey.lock'
-        en: "Lock"
-        sw: "Lås"
-    }
-    {
-        label: 'submenu.survey.deleteIt'
-        en: "Delete"
-        sw: "Radera"
     }
 ]

@@ -1,12 +1,13 @@
 // Sidebar html template (meteor-jade)
 
+
 template(name='sidebar')
   div#side-nav.col-xs-3.col-md-2.sidebar
+    //
     ul.nav.nav-sidebar
       li.active.menu-uppercase
-        a(href='#') {{getText navTitle}}
-      each menu.subMenuItems
-        li.nav-tabs.menu-capitalize
-          a(href='') > {{getText label}}
+        a {{getText subTitle}}
 
-
+      each getItems
+        li.nav-tabs.menu-capitalize.sidebar-tabs
+          a(href="{{pathFor route}}") > {{getText label}} 

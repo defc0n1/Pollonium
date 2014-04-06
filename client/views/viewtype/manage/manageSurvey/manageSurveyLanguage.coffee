@@ -1,4 +1,4 @@
-# language settings for Manage template menu
+# language settings for Manage Survey template sidebar menu
 
 languageText.appendProperties [
     {
@@ -38,7 +38,7 @@ languageText.appendProperties [
         sw: "Lås"
     }
     {
-        label: 'submenu.survey.deleteIt'
+        label: 'submenu.survey.deleteit'
         en: "Delete"
         sw: "Radera"
     }

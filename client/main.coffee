@@ -1,16 +1,18 @@
+###
+# This file will be loaded last since it's named main.*
+###
 
-# A global reference, because coffeescript wraps everything in a closure
-root = global ? window
 
-
-
-    # code to run on server at startup
+# Code to run on server at startup
 Meteor.startup ->
   Helpers.setLanguage "en"
   Session.set "language", "Helpers.language"
+  console.dir "Meteor running at: " + Meteor.absoluteUrl() 
   return
 
-Template.nav.rendered = ->
+
+UI.body.rendered = ->
+    # Set up reactivity for language dropdown from template "nav.jade"
     $("#en").click ->
       Helpers.setLanguage "en"
       return
@@ -21,30 +23,11 @@ Template.nav.rendered = ->
     return
 
 
-###    
-Template.manage.events = "click en": ->
-    alert "You pressed the button"
-###
-###
-@$("#en").click ->
-  console.log "clicked"
-  return
-###
-###
-    $("#sw").click (e) ->
-      e.preventDefault()
-      #do something
-      console.dir "clicked swedish"
-      return
-###
-
-###
-#root = global ? window
-
-if root.Meteor.isClient
-  root.Template.hello.greeting = ->
-    "Welcome to FirstApp."
-
-  root.Template.hello.events = "click input": ->
-    alert "You pressed the button"
-###
+# Set up helpers for reactive sidebar   
+Template.sidebar.subTitle = ->
+  Deps.depend subTitleDeps
+  subTitle
+    
+Template.sidebar.getItems = ->
+  Deps.depend subMenuDeps
+  subMenu

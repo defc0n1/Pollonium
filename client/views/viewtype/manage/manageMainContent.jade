@@ -1,9 +1,10 @@
 // Template landing page for managing Pollonium. 
 
 template(name='manage')
-  h3.sub-header Create, edit, and analyze surveys
+  h3.sub-header {{getText subHeader}} 
   // if session
-  p.lead  > Please sign in with your manager account in order to use this service. 
+  p.lead {{getText leadTextSignedIn}}  
+    // Render sign-in template
     +signin
   // else
       TODO: Signed-in text

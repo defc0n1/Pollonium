@@ -7,105 +7,134 @@
 # Specific variables for templates used here are imported from 
 # lib/templatesConfig.coffee, automatically by Meteor
 
+
+
+# Set up dependencies so that sidebar can be reactive - won't re-render otherwise!
+@subMenu = {}
+@subMenuDeps = new Deps.Dependency
+
+@setMenu = (m) ->
+    @subMenu = m
+    subMenuDeps.changed()
+    return
+
+@subTitle = ""
+@subTitleDeps = new Deps.Dependency
+
+@setTitle = (t) ->
+    @subTitle = t
+    subTitleDeps.changed()
+    return
+
+
+
+#  Set main menu items
+templatesSetup.manage.menu.menuItems = menuItemsManage
+
+# Set up default actions and templates to be rendered for all @routes
 Router.configure 
     layoutTemplate: "layout", #
     notFoundTemplate: 'not-found', # TODO
     loadingTemplate: 'loading'  # TODO
+    yieldTemplates: templatesSetup.templates
+    onBeforeAction: ->
+        setTitle templatesSetup.manage.navTitle
+        return
 
+
+# Set up routes
 Router.map ->
   @route "survey",
-    # *** EXAMPEL ROUTE ****/ TODO: MAKE POLLONIUM MANAGER ACCOUNT HERE?
+    # *** EXAMPLE ROUTE *** TODO: MAKE POLLONIUM MANAGER ACCOUNT HERE? OR SURVEY
     path: "/" # match the root path
-    template: "survey" # will map the domain url (the / path) and automatically render the template .
-    # layoutTemplate: 'layout', // redundant here
-    yieldTemplates: templatesSetup.templates # // region-specific templates, load default templates
+    template: "survey" # will map the domain url (the / path) + automatically render template 
+    # layoutTemplate: 'layout', # redundant here
+    # yieldTemplates: templatesSetup.templates  # redundant
 
   @route "manage",
     # path: '/manage', // redundant
     template: "manage"
-    yieldTemplates: templatesSetup.templates
+    waitOn: ->
+        setMenu subMenuItemsManage
+        return
     data: ->    
-      # this.params is available inside the data function
-      #var params = this.params; // choose returns differently depending on input from user ?     
+      # @params is available inside the data function   
+      # Populate templates with data   
+      templatesSetup.manage # return value
 
-      templatesSetup.manage.menu.menuItems = menuItemsManage
-      templatesSetup.manage.menu.subMenuItems = subMenuItemsManage
-        
-      #console.dir subMenuItemsManage
-      #console.dir menuItemsManage
-      #console.dir templatesSetup.manage
-      #console.dir templatesSetup.templates
-      
-      templatesSetup.manage # 
-    #action: ->
-            # TODO: Disable menu/s, set language string
-            # 
   @route "manageAccounts",
     path: "/manage/accounts"
     template: "manage-accounts"
-    yieldTemplates: templatesSetup.templates
+    waitOn: ->
+        setMenu subMenuItemsManage # TODO: subMenuItemsAccounts
+        return
     data: ->    
       templatesSetup.manage
-    #action: ->
-    #
+
   @route "manageAnalytics",
     path: "/manage/analytics"
     template: "manage-analytics"
-    yieldTemplates: templatesSetup.templates
+    waitOn: ->
+        setMenu subMenuItemsManage # TODO: subMenuItemsAnalytics
+        return
     data: ->    
       templatesSetup.manage
-    #action: ->  
+    
   
   @route "manageHierarchy",
     path: "/manage/hierarchy"
     template: "manage-hierarchy"
-    yieldTemplates: templatesSetup.templates
+    waitOn: ->
+        setMenu subMenuItemsManage # TODO: subMenuItemsHierarchy
+        return    
     data: ->    
-      templatesSetup.manage
-    #action: ->          
+      templatesSetup.manage        
 
   @route "managePersonnel",
     path: "/manage/personnel"
     template: "manage-personnel"
-    yieldTemplates: templatesSetup.templates
+    waitOn: ->
+        setMenu subMenuItemsManage # TODO: subMenuItemsPersonnel
+        return
     data: ->    
       templatesSetup.manage
-    #action: ->
   
   @route "manageSettings",
     path: "/manage/settings"
     template: "manage-settings"
-    yieldTemplates: templatesSetup.templates
+    waitOn: ->
+        setMenu subMenuItemsManage # TODO: subMenuItemsASettings
+        return    
     data: ->    
       templatesSetup.manage
-    #action: -> 
-    #
+
   @route "manageSurveys",
     path: "/manage/surveys"
     template: "manage-surveys"
-    yieldTemplates: templatesSetup.templates
+    #yieldTemplates: templatesSetup.templates
+    waitOn: ->
+        setMenu subMenuItemsSurvey
+        return
     data: ->    
-      templatesSetup.manage
-    #action: ->  
-        
-  @route "manageSurveyTask",
-    path: "/manage/survey/*"
-    #action: ->
-        # TODO: this.render(this.params), this.yieldTemplates: templateSetup
+      templatesSetup.manage 
+
+  @route "managesurveytask",
+    path: "/manage/surveys/:_id"#"/manage/surveys/*"
+    yieldTemplates: templatesSetup.templates
+    waitOn: ->
+        setMenu subMenuItemsSurvey
+        return
+    data: ->
+      templatesSetup.manage          onData: ->
+        @render @params._id
+        return
   return
-  
+
   ###
   EXAMPLES 
   ###
   
   ###  
-  # One Required Parameter
-  @route "postShow",
-    
-    # matches: '/posts/1'
-    path: "/posts/:_id"
-
-  
   # Multiple Parameters
   @route "twoSegments",
     
@@ -120,17 +149,6 @@ Router.map ->
     # matches: '/posts/1'
     # matches: '/posts/1/2'
     path: "/posts/:paramOne/:optionalParam?"
-
-  @route "postShow",
-    path: "/posts/:_id"
-    data: ->
-      
-      # the data function is an example where this.params is available
-      
-      # we can access params using this.params
-      # see the below paths that would match this route
-      params = @params
-      return
 
   
   # query params are added as normal properties to this.params.

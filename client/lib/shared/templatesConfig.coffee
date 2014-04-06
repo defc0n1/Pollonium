@@ -43,6 +43,7 @@ TemplateSetup = ->
 # Create new global instance of 'class'
 @templatesSetup = new TemplateSetup()
 
+
 # Specify which templates to yield by default
 @templatesSetup.templates =
   nav:
@@ -55,4 +56,5 @@ TemplateSetup = ->
     to: "description"
   pageheader:
     to: "pageheader" 
+
 
