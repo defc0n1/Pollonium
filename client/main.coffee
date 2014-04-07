@@ -22,12 +22,3 @@ UI.body.rendered = ->
       return
     return
 
-
-# Set up helpers for reactive sidebar   
-Template.sidebar.subTitle = ->
-  Deps.depend subTitleDeps
-  subTitle
-    
-Template.sidebar.getItems = ->
-  Deps.depend subMenuDeps
-  subMenu
