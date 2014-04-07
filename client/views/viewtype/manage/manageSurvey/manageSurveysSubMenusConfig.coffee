@@ -4,22 +4,22 @@
   {
     label: "submenu.survey.help"
     route: "managesurveytask"
-    _id: "help-survey"
+    _id: "help_survey"
   }
   {
     label: "submenu.survey.create"
     route: "managesurveytask"
-    _id: "create-survey"
+    _id: "create_survey"
   }
   {
     label: "submenu.survey.edit"
     route: "managesurveytask"
-    _id: "edit-survey"
+    _id: "edit_survey"
   }
   {
     label: "submenu.survey.deleteit"
     route: "managesurveytask"
-    _id: "delete-survey"
+    _id: "delete_survey"
   }
 ]
 ###

@@ -13,3 +13,7 @@ accounts-ui
 accounts-meteor-developer
 jquery
 handlebar-helpers
+jquery-ui-sortable
+spin
+collection2
+autoform

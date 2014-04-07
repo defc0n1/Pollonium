@@ -22,6 +22,7 @@ templatesSetup.manage =
         menuItems: []
         subMenuItems: []
         }
+  surveys: {}
  
 
 

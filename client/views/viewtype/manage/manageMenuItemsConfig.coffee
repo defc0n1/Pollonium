@@ -32,6 +32,6 @@
   {
     label: "submenu.manage.help"
     route: "manage"
-    context: "help" # use with {{#with context}} {{/with}}
+    _id: "help" 
   }
 ]

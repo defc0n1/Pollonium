@@ -3,6 +3,10 @@
     "jade": {},
     "iron-router": {},
     "bootstrap3-less": {},
-    "handlebar-helpers": {}
+    "handlebar-helpers": {},
+    "jquery-ui-sortable": {},
+    "spin": {},
+    "collection2": {},
+    "autoform": {}
   }
 }

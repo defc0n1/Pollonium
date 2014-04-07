@@ -31,58 +31,64 @@ Router.map ->
     template: "survey" # will map the domain url (the / path) + automatically render template 
     # layoutTemplate: 'layout', # redundant here
     # yieldTemplates: templatesSetup.templates  # redundant
+    onBeforeAction: ->
+        setMenu subMenuItemsManage # TODO: another menu
+        return
+    data: ->    
+      templatesSetup.manage # TODO: survey
 
+  ############ MANAGE SURVEYS ##########################
   @route "manage",
     # path: '/manage', // redundant
     template: "manage"
-    waitOn: ->
+    onBeforeAction: ->
         setMenu subMenuItemsManage
         return
+    #data: ->    
+      # @params is available inside the data function  
     data: ->    
-      # @params is available inside the data function   
-      # Populate templates with data   
-      templatesSetup.manage # return value
+      templatesSetup.manage       
 
   @route "manageAccounts",
     path: "/manage/accounts"
-    template: "manage-accounts"
-    waitOn: ->
+    template: "manage_accounts"
+    onBeforeAction: ->
         setMenu subMenuItemsManage # TODO: subMenuItemsAccounts
         return
     data: ->    
       templatesSetup.manage
-
+        
   @route "manageAnalytics",
     path: "/manage/analytics"
-    template: "manage-analytics"
-    waitOn: ->
+    template: "manage_analytics"
+    onBeforeAction: ->
         setMenu subMenuItemsManage # TODO: subMenuItemsAnalytics
         return
     data: ->    
       templatesSetup.manage
-  
+        
   @route "manageHierarchy",
     path: "/manage/hierarchy"
-    template: "manage-hierarchy"
-    waitOn: ->
+    template: "manage_hierarchy"
+    onBeforeAction: ->
         setMenu subMenuItemsManage # TODO: subMenuItemsHierarchy
-        return    
+        return          
     data: ->    
-      templatesSetup.manage        
-
+      templatesSetup.manage
+        
   @route "managePersonnel",
     path: "/manage/personnel"
-    template: "manage-personnel"
-    waitOn: ->
+    template: "manage_personnel"
+    onBeforeAction: ->
         setMenu subMenuItemsManage # TODO: subMenuItemsPersonnel
         return
     data: ->    
       templatesSetup.manage
-  
+        
   @route "manageSettings",
     path: "/manage/settings"
-    template: "manage-settings"
-    waitOn: ->
+    template: "manage_settings"
+    onBeforeAction: ->
         setMenu subMenuItemsManage # TODO: subMenuItemsASettings
         return    
     data: ->    
@@ -90,25 +96,29 @@ Router.map ->
 
   @route "manageSurveys",
     path: "/manage/surveys"
-    template: "manage-surveys"
-    #yieldTemplates: templatesSetup.templates
-    waitOn: ->
+    template: "manage_surveys"
+    onBeforeAction: ->
         setMenu subMenuItemsSurvey
         return
     data: ->    
-      templatesSetup.manage 
+      templatesSetup.manage
 
   @route "managesurveytask",
     path: "/manage/surveys/:_id"#"/manage/surveys/*"
     yieldTemplates: templatesSetup.templates
-    waitOn: ->
+    onBeforeAction: ->
+        #
         setMenu subMenuItemsSurvey
         return
+    waitOn: ->
+        Meteor.subscribe 'surveys'
     data: ->
+      templatesSetup.manage_surveys = Surveys.find()        
       templatesSetup.manage          
     onAfterAction: ->
         @render @params._id
         return
+    ############ MANAGEMENT ###################
   return
 
   ###

@@ -132,7 +132,12 @@ To remove a user, run meteor authorized <app name> --remove <username>.
    $ mrt add bootstrap3-less   # Cuztomized Bootstrap (less)
    $ mrt add jade              # HTML templating system + syntactic sugar
    $ mrt add iron-router       # JS routing for Meteor
-   $ nrt add handlebar-helpers # Template helper methods
+   $ mrt add handlebar-helpers # Template helper methods
+   $ mrt add jquery-ui-sortable# Draggable, sortable interactive JS
+   $ mrt add spin              # Loading data spinner for html
+   (?? $ mrt add collection2   # Schema extension for Meteor collections)
+   $ mrt add autoform          # Create forms with automatic insert/update events
+
 
    $ meteor remove insecure    # Secures the app
 

@@ -22,3 +22,4 @@ UI.body.rendered = ->
       return
     return
 
+#Meteor.subscribe "surveys"
