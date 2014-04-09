@@ -6,7 +6,8 @@
 # Code to run on server at startup
 Meteor.startup ->
   Helpers.setLanguage "en"
-  Session.set "language", "Helpers.language"
+  Session.set "language", "Helpers.language" 
+ 
   console.dir "Meteor running at: " + Meteor.absoluteUrl() 
   return
 

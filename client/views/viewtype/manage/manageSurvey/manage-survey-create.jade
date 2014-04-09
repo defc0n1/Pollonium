@@ -1,3 +1,29 @@
 template(name='create_survey')
-    p Create lol
-      | {{> quickForm collection="Books" id="insertBookForm" type="insert"}}
+    .col-xs-7.col-md-5.main
+        // | {{> quickForm collection="Books" id="insertBookForm" type="insert"}}
+        |{{> survey_create}}
+    .col-xs-7.col-md-5.main
+        // p ***
+
+template(name='survey_create')
+  div#items-view
+    div#new-survey-box
+      input#new-survey(type='text', placeholder='New Survey Item')
+      
+    if isItems
+        ul#item-list
+          each survey
+            li.well.well-sm
+                | {{> survey_item}}
+    else
+        p No data
+
+template(name='survey_item')
+  li.survey
+    if editing
+      div.edit
+        input#survey-input(type='text', value='{{text}}')
+    else
+      div.destroy
+      div.display
+        div.survey-text {{text}}

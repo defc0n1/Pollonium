@@ -110,10 +110,12 @@ Router.map ->
         #
         setMenu subMenuItemsSurvey
         return
-    waitOn: ->
-        Meteor.subscribe 'surveys'
+    waitOn: ->   
+      list_id = Session.get("list_id")
+      # NOTE: this.params is available inside the waitOn function.
+      [ Meteor.subscribe("surveylist"), Meteor.subscribe("survey", list_id) ]
     data: ->
-      templatesSetup.manage_surveys = Surveys.find()        
+      #templatesSetup.manage_surveys = Surveys.find()        
       templatesSetup.manage          
     onAfterAction: ->
         @render @params._id
