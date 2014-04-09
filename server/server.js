@@ -4,14 +4,15 @@ Any sensitive code that you don't want served to the client, such as code contai
 */
 
 
-/*
 
-Meteor.publish('directory', function () {
-    return Meteor.users.find({}, {fields: {emails: 1, profile: 1}});
-});
 
-Meteor.publish("parties", function() {
-    return Parties.find(
-	{$or: [{"public": true}, {invited: this.userId}, {owner: this.userId}]});
+// if the database is empty on server start, create some sample data.
+Meteor.startup(function () {
+
+    if (SurveyList.find().count() === 0) {
+      SurveyList.insert({
+        label: "webpoll",
+        year: 2014
+      });
+    }
 });
-*/

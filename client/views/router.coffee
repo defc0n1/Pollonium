@@ -120,7 +120,10 @@ Router.map ->
     onAfterAction: ->
         @render @params._id
         return
+    
     ############ MANAGEMENT ###################
+    #
+    #
   return
 
   ###

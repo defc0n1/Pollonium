@@ -22,5 +22,3 @@ UI.body.rendered = ->
       Helpers.setLanguage "sw"
       return
     return
-
-#Meteor.subscribe "surveys"
