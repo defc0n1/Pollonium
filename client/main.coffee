@@ -12,13 +12,17 @@ Meteor.startup ->
   return
 
 
+
+
+# Body helpers / methods
 UI.body.rendered = ->
     # Set up reactivity for language dropdown from template "nav.jade"
     $("#en").click ->
-      Helpers.setLanguage "en"
-      return
+        Helpers.setLanguage "en"
+        return
     
     $("#sw").click ->
-      Helpers.setLanguage "sw"
-      return
+        Helpers.setLanguage "sw"
+        return
+    
     return

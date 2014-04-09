@@ -44,12 +44,48 @@ activateInput = (input) ->
   input.select()
 
 
+####################################################
+# Sortable
+#Code by Avital Oliver
+#https://github.com/avital
+#https://github.com/meteor/meteor/tree/master/examples/unfinished/reorderable-list
+#
+SimpleRationalRanks =
+  beforeFirst: (firstRank) ->
+    firstRank - 1
+  between: (beforeRank, afterRank) ->
+    (beforeRank + afterRank) / 2
+  afterLast: (lastRank) ->
+    lastRank + 1
+    
+    
+Template.create_survey.rendered = ->
+        # uses the 'sortable' interaction from jquery ui
+    # #
+    #Code by Avital Oliver
+    #
+    $(@find("#item-list")).sortable stop: (event, ui) -> # fired when an item is dropped
+        el = ui.item.get(0)
+        before = ui.item.prev().get(0)
+        after = ui.item.next().get(0)
+        newRank = undefined      
+        
+        unless before # moving to the top of the list
+          newRank = SimpleRationalRanks.beforeFirst(UI.getElementData(after).rank)
+        else unless after # moving to the bottom of the list
+          newRank = SimpleRationalRanks.afterLast(UI.getElementData(before).rank)
+        else
+          newRank = SimpleRationalRanks.between(UI.getElementData(before).rank, UI.getElementData(after).rank)
 
+        Survey.update UI.getElementData(el)._id,
+          $set:
+            rank: newRank
+        return
 
 ################ Helpers for creating survey items ######
 Template.create_survey.events okCancelEvents("#new-survey",
   ok: (text, evt) ->
-    rank = Survey.find().count() + 1
+    rank = Survey.find().count() + 1 # TODO: Sortera rätt
     Survey.insert
       text: text
       list_id: Session.get("list_id")

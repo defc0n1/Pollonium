@@ -2,20 +2,14 @@
 # Meteor Collection that stores surveys
 # 
 # Code inside folders that are not client/ or server/ will run 
-# in bothe contexts
+# in bothecontexts
 ###
 
-#@Surveys = new Meteor.Collection 'surveys'
-
-###
 
 @SurveyList = new Meteor.Collection("surveylist")
 @Survey = new Meteor.Collection("survey")
 
-if SurveyList.find().count() is 0
-  SurveyList.insert
-    label: "webpoll"
-    year: 2014
+
 
 SurveyList.allow
   insert: ->
@@ -33,40 +27,39 @@ Survey.allow
     true
   remove: ->
     true
-###
-###
 
-@Books = new Meteor.Collection("books",
+
+
+@Question = new Meteor.Collection("question",
   schema:
     title:
       type: String
       label: "Title"
-      max: 50
+      max: 25
 
-    author:
-      type: String
-      label: "Author"
+    optionalBoolean: {
+      type: Boolean,
       optional: true
-
-    copies:
-      type: Number
-      label: "Number of copies"
-      min: 0
-      optional: true
+    },
+    radioBoolean: {
+      type: Boolean,
+      optional: true,
+      defaultValue: true
+    },
+    selectBoolean: {
+      type: Boolean,
+      optional: true,
+      defaultValue: false
+    },
     
-    lastCheckedOut:
-      type: Date
-      label: "Last date this book was checked out"
-      optional: true
-    
-    summary:
+    free:
       type: String
-      label: "Brief summary"
+      label: "Free text"
       optional: true
       max: 100
 )
 
-Books.allow
+Question.allow
   insert: ->
     true
   update: ->

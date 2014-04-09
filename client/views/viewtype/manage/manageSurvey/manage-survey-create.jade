@@ -6,7 +6,7 @@ template(name='create_survey')
         if isItems
             #item-list
               each survey
-                .well.well-sm {{> survey_item}}
+                .well.well-sm.item {{> survey_item}}
         else
             // TODO: lang string
             p No data yet

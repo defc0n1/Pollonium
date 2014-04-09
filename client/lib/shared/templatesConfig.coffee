@@ -18,7 +18,7 @@
 
 
 # Name of your company (globally used) 
-@companyName = "COMPANY" 
+@companyName = "Company" 
 @pollYear = 2014 # TODO: Load from collectison instead? set when survey-creating..
 
 
