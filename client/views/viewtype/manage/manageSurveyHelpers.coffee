@@ -38,7 +38,7 @@ okCancelEvents = (selector, callbacks) ->
         cancel.call this, evt
   events
 
-
+##
 activateInput = (input) ->
   input.focus()
   input.select()
@@ -60,10 +60,8 @@ SimpleRationalRanks =
     
     
 Template.create_survey.rendered = ->
-        # uses the 'sortable' interaction from jquery ui
-    # #
-    #Code by Avital Oliver
-    #
+    # uses the 'sortable' interaction from jquery ui
+    # Code by Avital Oliver
     $(@find("#item-list")).sortable stop: (event, ui) -> # fired when an item is dropped
         el = ui.item.get(0)
         before = ui.item.prev().get(0)
@@ -83,6 +81,12 @@ Template.create_survey.rendered = ->
         return
 
 ################ Helpers for creating survey items ######
+Template.insertQuestionForm.editingDoc = ->
+  #console.log Session.get("selectedDocId")
+  return Question.findOne _id: Session.get("selectedDocId")
+  #Question.remove Session.get("selectedDocId")
+  #return
+
 Template.create_survey.events okCancelEvents("#new-survey",
   ok: (text, evt) ->
     rank = Survey.find().count() + 1 # TODO: Sortera rätt
@@ -101,7 +105,6 @@ Template.create_survey.survey = ->
   Survey.find sel,
     sort:
       rank: 1
-
 
 Template.create_survey.isItems = ->
   list_id = undefined

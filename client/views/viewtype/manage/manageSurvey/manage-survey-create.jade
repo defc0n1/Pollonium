@@ -6,10 +6,16 @@ template(name='create_survey')
         if isItems
             #item-list
               each survey
-                .well.well-sm.item {{> survey_item}}
+                .well.well-sm.item 
+                    | {{> survey_item}}
+                    | {{> insertQuestionForm}}
         else
             // TODO: lang string
             p No data yet
+            
+template(name="insertQuestionForm")
+    | {{> quickForm collection="Question" id="insertQuestionForm" doc=editingDoc type="update"}}
+    | {{> afDeleteButton collection="Question" doc=editingDoc}}
 
 template(name='survey_create')
   #items-view

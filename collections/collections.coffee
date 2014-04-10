@@ -50,8 +50,7 @@ Survey.allow
       type: Boolean,
       optional: true,
       defaultValue: false
-    },
-    
+    },    
     free:
       type: String
       label: "Free text"
