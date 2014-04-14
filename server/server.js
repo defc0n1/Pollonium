@@ -5,14 +5,3 @@ Any sensitive code that you don't want served to the client, such as code contai
 
 
 
-
-// if the database is empty on server start, create some sample data.
-Meteor.startup(function () {
-
-    if (SurveyList.find().count() === 0) {
-      SurveyList.insert({
-        label: "webpoll",
-        year: 2014
-      });
-    }
-});

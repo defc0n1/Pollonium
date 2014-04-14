@@ -1,15 +1,6 @@
-
-# Clear for extra space
-Template.create_survey.rendered = ->
-  $(".page-header").remove()
-  return
-
-
 #
-Session.setDefault "list_id", 2014 # null// Id(year) of currently selected list, TODO: fetch actual year
+Session.setDefault "list_id", null # null// Id(year) of currently selected list, TODO: fetch actual year
 Session.setDefault "editing_itemname", null # Editing a survey question, set to id of s.question
-
-
 
 ###### Helpers for in-place editing #########
 # https://github.com/perjo927/meteor/blob/devel/examples/todos/client/todos.js, Avital Oliver
@@ -57,9 +48,14 @@ SimpleRationalRanks =
     (beforeRank + afterRank) / 2
   afterLast: (lastRank) ->
     lastRank + 1
+   
     
-    
+
+
+#####    
 Template.create_survey.rendered = ->
+    # Clear for extra space
+    $(".page-header").remove()
     # uses the 'sortable' interaction from jquery ui
     # Code by Avital Oliver
     $(@find("#item-list")).sortable stop: (event, ui) -> # fired when an item is dropped
@@ -75,52 +71,56 @@ Template.create_survey.rendered = ->
         else
           newRank = SimpleRationalRanks.between(UI.getElementData(before).rank, UI.getElementData(after).rank)
 
-        Survey.update UI.getElementData(el)._id,
+        SurveyItems.update UI.getElementData(el)._id,
           $set:
             rank: newRank
         return
+    return
+
+
+
 
 ################ Helpers for creating survey items ######
-Template.insertQuestionForm.editingDoc = ->
-  #console.log Session.get("selectedDocId")
-  return Question.findOne _id: Session.get("selectedDocId")
-  #Question.remove Session.get("selectedDocId")
-  #return
+########## Helpers ofr survey items #############
 
 Template.create_survey.events okCancelEvents("#new-survey",
   ok: (text, evt) ->
-    rank = Survey.find().count() + 1 # TODO: Sortera rätt
-    Survey.insert
+    rank = SurveyItems.find().count() #0 # TODO: ranka efter listan är sorterad
+    
+    SurveyItems.insert # TODO: Generate chosen Alpaca form and insert text as label
       text: text
       list_id: Session.get("list_id")
       rank: rank
 
     evt.target.value = ""
 )
-Template.create_survey.survey = ->
-  list_id = undefined
-  sel = undefined
-  list_id = Session.get("list_id")
-  sel = list_id: list_id
-  Survey.find sel,
-    sort:
-      rank: 1
-
-Template.create_survey.isItems = ->
-  list_id = undefined
-  list_id = Session.get("list_id")
-  list_id
 
 
 
+Template.create_survey.newSurveyRequired = ->
+   SurveyList.find().count() is 0
+    
+    
+    
+    
 
-########## Helpers ofr survey items #############
+Template.new_survey.events
+    "click #new_survey": ->
+        SurveyList.insert
+          label: companyName + " web poll"
+          year: new Date().getFullYear() # TODO: customize this
+          lock: false
+        return
+
+
+
 Template.survey_item.editing = ->
   Session.equals "editing_itemname", @_id
 
 Template.survey_item.events
   "click .destroy": ->
-    Survey.remove @_id
+    SurveyItems.remove @_id
+    # TODO: Remove alpaca
     return
 
   "dblclick .display .survey-text": (evt, tmpl) ->
@@ -133,17 +133,48 @@ Template.survey_item.events
     id = @list_id
     evt.target.parentNode.style.opacity = 0
     Meteor.setTimeout (->
-      Survey.update _id: id
+      SurveyItems.update _id: id
     ), 300
 
 Template.survey_item.events okCancelEvents("#survey-input",
   ok: (value) ->
-    Survey.update @_id,
+    SurveyItems.update @_id,
       $set:
         text: value
-
     Session.set "editing_itemname", null
-
   cancel: ->
     Session.set "editing_itemname", null
 )
+
+#### Survey editing ####
+Template.edit_survey.newSurveyRequired = ->
+   SurveyList.find().count() is 0
+
+Template.edit_survey.events
+    "click #btn_survey_edit": (evt) ->
+        #evt.preventDefault()
+        list_id = @_id
+        console.dir @_id
+        locked = SurveyList.find
+            _id: list_id
+        if locked
+            console.dir "Locked!"
+            alert "Locked!"
+        return
+    "click #btn_survey_lock_unlock": (evt) ->
+        lockedState = SurveyList.find
+            _id: @_id
+        SurveyList.update @_id,
+          $set:
+            lock: not lockedState
+        alert "lockedState: " + (not lockedState) 
+        return
+           
+        
+
+
+Template.insertQuestionForm.editingDoc = ->
+  #console.log Session.get("selectedDocId")
+  #return Question.findOne _id: Session.get("selectedDocId")
+  #Question.remove Session.get("selectedDocId")
+  return

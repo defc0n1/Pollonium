@@ -5,13 +5,22 @@
 # in bothecontexts
 ###
 
-
+# SurveyList:
+# year: String
+# _id: _id
+# Title: String
+#
 @SurveyList = new Meteor.Collection("surveylist")
-@Survey = new Meteor.Collection("survey")
+
+# SurveyItem:
+# year: Number -> list_id: _id
+# type: -> String (dynamic reference to alpaca form schema)
+# rank: Number
+@SurveyItems = new Meteor.Collection("surveyitems")
 
 
 
-SurveyList.allow
+SurveyList.allow # TODO:  Allow  onlyfor auth
   insert: ->
     true
   update: ->
@@ -20,7 +29,7 @@ SurveyList.allow
     true
 
 
-Survey.allow
+SurveyItems.allow # TODO: Allow for auth
   insert: ->
     true
   update: ->
@@ -28,34 +37,16 @@ Survey.allow
   remove: ->
     true
 
-
+    
+#########################
 
 @Question = new Meteor.Collection("question",
   schema:
-    title:
-      type: String
-      label: "Title"
-      max: 25
-
-    optionalBoolean: {
-      type: Boolean,
-      optional: true
-    },
     radioBoolean: {
       type: Boolean,
-      optional: true,
+      #optional: true,
       defaultValue: true
-    },
-    selectBoolean: {
-      type: Boolean,
-      optional: true,
-      defaultValue: false
-    },    
-    free:
-      type: String
-      label: "Free text"
-      optional: true
-      max: 100
+    }
 )
 
 Question.allow

@@ -19,8 +19,7 @@
 
 # Name of your company (globally used) 
 @companyName = "Company" 
-@pollYear = 2014 # TODO: Load from collectison instead? set when survey-creating..
-
+@pollYear = new Date().getFullYear() 
 
 # TemplateSetup - superclass #
 # There are 4 main functions of Pollonium:

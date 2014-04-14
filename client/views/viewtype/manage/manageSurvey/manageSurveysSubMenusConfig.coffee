@@ -17,22 +17,14 @@
     _id: "edit_survey"
   }
   {
-    label: "submenu.survey.deleteit"
-    route: "managesurveytask"
-    _id: "delete_survey"
-  }
-]
-###
-
-  {
     label: "submenu.survey.deploy"
     route: "managesurveytask"
-    _id: 4
+    _id: "deploy_survey"
   }
   {
     label: "submenu.survey.lock"
     route: "managesurveytask"
-    _id: 5
+    _id: "lock_survey"
   }
-
+]
 ###

@@ -22,6 +22,7 @@ Router.configure
         setTitle templatesSetup.manage.navTitle
         return
 
+#Router.onBeforeAction('loading')
 
 # Set up routes #
 Router.map ->
@@ -103,24 +104,71 @@ Router.map ->
     data: ->    
       templatesSetup.manage
 
+  # Called when a choice in the sub menu is clicked and we don't get any list specified  
   @route "managesurveytask",
     path: "/manage/surveys/:_id"#"/manage/surveys/*"
     yieldTemplates: templatesSetup.templates
     onBeforeAction: ->
+        unless Session.get("list_id")
+          list = SurveyList.findOne({},
+            sort:
+              year: 1
+          )
+          Session.set("list_id", list._id) if list
         #
         setMenu subMenuItemsSurvey
         return
     waitOn: ->   
       list_id = Session.get("list_id")
       # NOTE: this.params is available inside the waitOn function.
-      [ Meteor.subscribe("surveylist"), Meteor.subscribe("survey", list_id) ]
+      [ Meteor.subscribe("surveylist"), Meteor.subscribe("surveyitems", list_id)]
     data: ->
-      #templatesSetup.manage_surveys = Surveys.find()        
-      templatesSetup.manage          
+      list_id
+      sel = undefined
+      list_id = Session.get("list_id")
+      sel = list_id: list_id
+      # specify in the sort parameter the field or fields to sort by and a value of 1 or -1 
+      #  to specify an ascending or descending sort respectively.
+      templatesSetup.manage.surveyItems = 
+        SurveyItems.find sel,
+            sort: # 
+              rank: 1      
+      templatesSetup.manage.surveyList = SurveyList.find()
+      templatesSetup.manage      
+    #onData : ->
+    #    
     onAfterAction: ->
         @render @params._id
         return
     
+  # Called when the "edit" link in the Edit Survey Page is clicked  
+  @route "createsurvey",
+    path: "/manage/surveys/create/:_id"#"/manage/surveys/*"
+    yieldTemplates: templatesSetup.templates
+    onBeforeAction: ->
+        setMenu subMenuItemsSurvey
+        return
+    waitOn: ->   
+      list_id = Session.get("list_id")
+      # NOTE: this.params is available inside the waitOn function.
+      [ Meteor.subscribe("surveylist"), Meteor.subscribe("surveyitems", list_id)]
+    data: ->
+      list_id =  @params._id
+      sel = undefined
+      Session.get("list_id", list_id)
+      sel = list_id: list_id
+      #
+      templatesSetup.manage.surveyItems = 
+        SurveyItems.find sel,
+            sort: # 
+              rank: 1      
+      templatesSetup.manage.surveyList = SurveyList.find( {_id: list_id})
+      templatesSetup.manage      
+    #    
+    onAfterAction: ->
+        @render "create_survey"
+        return  
+    #
     ############ MANAGEMENT ###################
     #
     #

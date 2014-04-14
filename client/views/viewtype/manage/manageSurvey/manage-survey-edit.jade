@@ -1,6 +1,43 @@
 template(name='edit_survey')
-    p Edit
-
-
-
-
+    unless newSurveyRequired 
+        h3.menu-capitalize {{getText 'submenu.survey.edit'}} {{getText 'menu.surveys'}}
+        div.panel.panel-primary
+          // TODO: Lang strings
+          div.panel-heading List of available surveys for editing
+          div.panel-body
+            p Placeholder text
+          table.table.table-bordered.table-hover.table-striped.table-responsive
+            thead
+              tr
+                th Label
+                th Year
+                th DB ID
+                th Actions
+                th
+            tbody
+             each surveyList
+               tr
+                 td {{label}}
+                 td {{year}}
+                 td {{_id}}
+                 td
+                  .btn-group                   
+                     a(href="{{pathFor 'createsurvey'}}")
+                       button.btn.btn-success(type="button" id="btn_survey_edit")
+                        | Edit  
+                     // TODO: sUBMENU CHOICES                    
+                     a(href='#')
+                       button.btn.btn-warning(type="button" id="btn_survey_lock_unlock")
+                        | Lock / Unlock  
+                       //td
+                     a(href='#')
+                       button.btn.btn-info(type="button" id="btn_survey_deploy")
+                        | Deploy  
+                       //td
+                     a(href='#')
+                       button.btn.btn-danger(type="button" id="btn_survey_delete")
+                        | Delete
+    else
+        h3.menu-capitalize {{getText 'submenu.survey.edit'}} {{getText 'menu.surveys'}}
+        // TODO: lang string
+        p No data

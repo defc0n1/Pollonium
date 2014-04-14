@@ -1,27 +1,39 @@
 template(name='create_survey')
     .col-xs-7.col-md-5.main
-        // | {{> quickForm collection="Books" id="insertBookForm" type="insert"}}
-        |{{> survey_create}}
-    .col-xs-7.col-md-5.main
-        if isItems
+        if newSurveyRequired
+           |  {{> new_survey}}
+        else
+            // TODO: lang string
+            | {{> survey_create}} 
+    .col-xs-7.col-md-5.mai
+        // Check if there is a record in the db
+        unless newSurveyRequired
             #item-list
-              each survey
+              each surveyItems
                 .well.well-sm.item 
                     | {{> survey_item}}
                     | {{> insertQuestionForm}}
-        else
-            // TODO: lang string
-            p No data yet
+
+
+template(name="new_survey")
+    // TODO: lang string
+    h2.sub-header.menu-uppercase  {{getText "submenu.survey.create"}} {{getText 'menu.surveys'}}  
+    .well
+        h4.sub-header.menu-uppercase Database Empty
+        // TODO: lang string
+        | No survey found. Please create a new survey.  
+        button.btn.btn-primary.pull-right.menu-capitalize(type="button" id="new_survey")
+            | {{getText "submenu.survey.create"}}
             
 template(name="insertQuestionForm")
-    | {{> quickForm collection="Question" id="insertQuestionForm" doc=editingDoc type="update"}}
+    | {{> quickForm collection="Question" id="insertQuestionForm" doc=editingDoc type="disabled"}}
     | {{> afDeleteButton collection="Question" doc=editingDoc}}
 
 template(name='survey_create')
   #items-view
     #new-survey-box
       // TODO: lang string
-      h2.sub-header.menu-uppercase Create 
+      h2.sub-header.menu-uppercase {{getText "submenu.survey.create"}} {{getText 'menu.surveys'}}  
       .input-group
           // TODO: lang string
           input.form-control#new-survey(type='text', placeholder='New Survey Item')
@@ -33,11 +45,10 @@ template(name='survey_item')
   .survey
     if editing
       .edit
-        input#survey-input(type='text', value='{{text}}')
+        input.form-control.input-sm#survey-input(type='text', value='{{text}}',  placeholder=".col-xs-3")
     else
       .destroy
       .display
         .survey-text 
             b 
-              | {{rank}}. 
-            | {{text}}
+               | {{text}}

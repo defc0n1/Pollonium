@@ -16,13 +16,14 @@ templatesSetup.manage =
   subHeader: "manage.subheader"
   leadTextSignedIn: "manage.leadtext.signedin"
   leadTextNotSignedIn: "manage.leadtext.notsignedin"
-  coreRoute: "manage"
+  coreRoute: "manage" # escape hatch
   rootUrl: Meteor.absoluteUrl()
   menu: { 
         menuItems: []
         subMenuItems: []
         }
-  surveys: {}
+  surveyItems: {}
+  surveyList: {}
  
 
 
